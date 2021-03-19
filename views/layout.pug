@@ -2,13 +2,14 @@ doctype html
 html
   head
     title Notes
-    link(rel='stylesheet' href='/static/main.css')
-
+    link(href='/static/style.css' rel='stylesheet')
   body
     header.header
-      h1.logo Notes App
+      h1.logo
+        a(href='/') Notes
 
-      nav
-        a(href='/all-notes') All Notes
-        a(href='/archive') Archive
+      nav.nav
+        a(href='/notes') notes
+        a(href='/archive') archive
+
     block content
