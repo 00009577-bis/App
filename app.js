@@ -1,16 +1,29 @@
 const express = require('express')
 const app = express()
 
-app.use('/static', express.static('public'))
-
 app.set('view engine', 'pug')
+
+// dev process
+app.use('/static', express.static('public'))
 
 app.get('/', (req, res) => {
 	res.render('home')
 })
 
-app.listen(8000, err => {
-	if (err) throw err
+app.get('/create-note', (req, res) => {
+	res.render('create')
+})
 
-	console.log('App is running...')
+app.get('/notes', (req, res) => {
+	res.render('notes', { noteList: ['First note', 'Second note'] })
+})
+
+app.get('/notes/detail', (req, res) => {
+	res.render('detail')
+})
+
+app.listen(8000, err => {
+	if(err) throw err
+
+	console.log('App is running on port 8000...')
 })
